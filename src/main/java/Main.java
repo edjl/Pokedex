@@ -1,3 +1,7 @@
+/*
+ * Edward Lee
+ * May 21, 2022
+ */
 
 import java.util.Scanner;
 
@@ -7,7 +11,6 @@ public class Main {
         System.out.println("What  would you like to do?");
         System.out.println("If this is your first time, you should probably web scrape all tables first.");
         System.out.println("    (w) Web Scrape Latest Tables");
-        System.out.println("    (d) Simulate a 1v1 Pokemon Battle");
         System.out.println("    (q) Quit");
         return sc.next().charAt(0);
     }
@@ -42,6 +45,7 @@ public class Main {
         while (prompt != 'q') {
             if (prompt == 'w')
                 webScrapeTable(sc);
+
             prompt = initialPrompt(sc);
         }
         System.out.println("Thanks for using this program!");
