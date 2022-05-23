@@ -13,8 +13,8 @@ public class NatureTable implements Table {
     static final String webURL = "https://bulbapedia.bulbagarden.net/wiki/Nature";
     static final String tSQL = "CREATE TABLE " + properName +
             "(Name VARCHAR(10) not null, " +
-            "IncStat VARCHAR(10) not null, " +
-            "DecStat VARCHAR(10) not null, " +
+            "IncStat VARCHAR(20) not null, " +
+            "DecStat VARCHAR(20) not null, " +
             "FavFlavor VARCHAR(10) not null, " +
             "DisFlavor VARCHAR(10) not null, " +
             "PRIMARY KEY (Name))";
@@ -46,8 +46,6 @@ public class NatureTable implements Table {
                 String dec = row.select("td:nth-of-type(4)").text();
                 String fFlavor = row.select("td:nth-of-type(5)").text();
                 String dFlavor = row.select("td:nth-of-type(6)").text();
-                inc = inc.replaceAll("\\s", "");
-                dec = dec.replaceAll("\\s", "");
                 if (name.length() == 0 && !row.text().contains("Nature"))
                     break;
 

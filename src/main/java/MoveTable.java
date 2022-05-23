@@ -48,7 +48,7 @@ public class MoveTable implements Table {
                     break;
                 else if(!row.text().contains("Name")) {
                     String name = row.select("td:nth-of-type(2)").text();
-                    name = name.replaceAll("\\s|'", "");
+                    name = Table.handleApostraphe(name);
                     String type = row.select("td:nth-of-type(3)").text();
                     String category = row.select("td:nth-of-type(4)").text();
                     String dam = row.select("td:nth-of-type(6)").text().contains("—") ? "0" : row.select("td:nth-of-type(6)").text();
