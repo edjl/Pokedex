@@ -22,18 +22,15 @@ public class Main {
         System.out.println("    (m) Moves Table");
         System.out.println("    (a) Abilities Table");
         System.out.println("    (n) Natures Table");
-        System.out.println("    (s) Statuses Table");
         tables = sc.next();
         if (tables.contains("g"))
-            Data.updateTable("g");
+            GeneralTable.updateTable();
         if (tables.contains("m"))
-            Data.updateTable("m");
+            MoveTable.updateTable();
         if (tables.contains("a"))
-            Data.updateTable("a");
+            AbilityTable.updateTable();
         if (tables.contains("n"))
-            Data.updateTable("n");
-        if (tables.contains("s"))
-            Data.updateTable("s");
+            NatureTable.updateTable();
 
         System.out.println("Web scrape successful!");
     }
