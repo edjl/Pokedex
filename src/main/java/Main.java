@@ -19,12 +19,15 @@ public class Main {
         String tables = " ";
         System.out.println("Which table(s) would you like to web scrape?");
         System.out.println("    (g) General Table (#, Pokemon, types, stats)");
+        System.out.println("    (t) Type Table");
         System.out.println("    (m) Moves Table");
         System.out.println("    (a) Abilities Table");
         System.out.println("    (n) Natures Table");
         tables = sc.next();
         if (tables.contains("g"))
             GeneralTable.updateTable();
+        if (tables.contains("t"))
+            TypeTable.updateTable();
         if (tables.contains("m"))
             MoveTable.updateTable();
         if (tables.contains("a"))
