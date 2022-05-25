@@ -12,6 +12,7 @@ public class Main {
         System.out.println("If this is your first time, you should probably web scrape all tables first.");
         System.out.println("    (w) Web Scrape Latest Tables");
         System.out.println("    (g) Find General Information About a Pokemon");
+        System.out.println("    (s) Find Stats About a Specific Pokemon");
         System.out.println("    (q) Quit");
         return sc.nextLine().charAt(0);
     }
@@ -46,6 +47,25 @@ public class Main {
         System.out.println("Web scrape successful!");
     }
 
+    public static void pokemonStats(Scanner sc) {
+        System.out.println("What is the name of the pokemon?");
+        String name = sc.nextLine();
+        System.out.println("What is the level of the pokemon?");
+        int level = sc.nextInt();
+        sc.nextLine();
+        System.out.println("What is the IV of the pokemon?");
+        int iv = sc.nextInt();
+        sc.nextLine();
+        System.out.println("What is the EV of the pokemon?");
+        int ev = sc.nextInt();
+        sc.nextLine();
+        System.out.println("What is the nature of the pokemon?");
+        String nature = sc.nextLine();
+
+        Pokemon poke = new Pokemon(name, level, iv, ev, nature);
+        poke.printPokemon();
+    }
+
     public static void main (String[] args) {
         Scanner sc = new Scanner (System.in);
         System.out.println("Welcome to Edward's Pokedex!");
@@ -57,6 +77,8 @@ public class Main {
                 String pokemon = getPokemonPrompt(sc);
                 GeneralTable.printGeneralInfo(pokemon);
             }
+            else if (prompt == 's')
+                pokemonStats(sc);
 
             System.out.println();
             prompt = initialPrompt(sc);

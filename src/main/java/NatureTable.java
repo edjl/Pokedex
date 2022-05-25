@@ -59,4 +59,32 @@ public class NatureTable implements Table {
             ex.printStackTrace();
         }
     }
+
+    public static double getMultiplier (String nature, String stat) {
+        Connection conn = null;
+        Statement st = null;
+        String incStat = "";
+        String decStat = "";
+
+        try {
+            conn = DriverManager.getConnection(database, user, pass);
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+            String query = "SELECT * FROM " + properName + " WHERE Name = \'" + nature + "\';";
+            ResultSet rs = st.executeQuery(query);
+
+            rs.next();
+            incStat = rs.getString("IncStat");
+            decStat = rs.getString("DecStat");
+            conn.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        if (stat.equals(incStat))
+            return 1.1;
+        else if (stat.equals(decStat))
+            return 0.9;
+        return 1.0;
+    }
 }

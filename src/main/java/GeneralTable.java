@@ -87,7 +87,7 @@ public class GeneralTable implements Table {
         }
     }
 
-    private static String []getGeneralInfoByName(String pokemon) {
+    public static String []getGeneralInfoByName(String pokemon) {
         Connection conn = null;
         Statement st = null;
         String []pok = new String[11];
