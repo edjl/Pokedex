@@ -15,7 +15,8 @@ public class GeneralTable implements Table {
     static final String tSQL = "CREATE TABLE " + properName +
             "(Id INTEGER not null, " +
             "Name VARCHAR(35) not null, " +
-            "Type VARCHAR(20) not null, " +
+            "Type1 VARCHAR(10) not null, " +
+            "Type2 VARCHAR(10) not null, " +
             "Total INTEGER not null, " +
             "HP INTEGER not null, " +
             "Attack INTEGER not null, " +
@@ -60,7 +61,7 @@ public class GeneralTable implements Table {
                 if (row.text().charAt(0) != '#') {
                     int number = Integer.parseInt(row.select(".infocard-cell-data").text());
                     String name = getName(row.select(".ent-name").text(), row.select(".text-muted").text());
-                    String type = row.select(".cell-icon").text();
+                    String type1 = row.select(".cell-icon").text();
                     int statTotal = Integer.parseInt(row.select(".cell-total").text());
                     int statHP = Integer.parseInt(row.select("td.cell-num:nth-of-type(5)").text());
                     int statA = Integer.parseInt(row.select("td.cell-num:nth-of-type(6)").text());
@@ -69,8 +70,14 @@ public class GeneralTable implements Table {
                     int statSpD = Integer.parseInt(row.select("td.cell-num:nth-of-type(9)").text());
                     int statS = Integer.parseInt(row.select("td.cell-num:nth-of-type(10)").text());
 
-                    String query = "INSERT INTO " + properName + " (Id, Name, Type, Total, HP, Attack, Defense, SpAtk, SpDef, Speed) " +
-                            "VALUES (" + number + ", \'" + name + "\', \'" + type + "\', " + statTotal + ", " + statHP + ", " + statA +
+                    String type2 = "";
+                    if (type1.contains(" ")) {
+                        int spaceIndex = type1.indexOf(' ');
+                        type2 = type1.substring(spaceIndex+1);
+                        type1 = type1.substring(0, spaceIndex);
+                    }
+                    String query = "INSERT INTO " + properName + " (Id, Name, Type1, Type2, Total, HP, Attack, Defense, SpAtk, SpDef, Speed) " +
+                            "VALUES (" + number + ", \'" + name + "\', \'" + type1 + "\', \'" + type2 + "\', " + statTotal + ", " + statHP + ", " + statA +
                             ", " + statD + ", " + statSpA + ", " + statSpD + ", " + statS + ");";
                     st.executeUpdate(query);
                 }
