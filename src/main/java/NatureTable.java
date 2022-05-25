@@ -74,8 +74,8 @@ public class NatureTable implements Table {
             ResultSet rs = st.executeQuery(query);
 
             rs.next();
-            incStat = "" + rs.getString("IncStat");
-            decStat = "" + rs.getString("DecStat");
+            incStat = rs.getString("IncStat");
+            decStat = rs.getString("DecStat");
             conn.close();
         } catch (Exception ex) {
             ex.printStackTrace();

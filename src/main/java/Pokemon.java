@@ -30,7 +30,7 @@ public class Pokemon {
     public void printPokemon() {
         System.out.print("Pokemon:\t" + id + "\t  " + name.toUpperCase() + "    \t" + type1);
         System.out.println((type2.equals("") ? "" : "-" + type2));
-        System.out.println("\tLevel:\t" + level + "\t  " + iv + " IV  " + ev + " EV");
+        System.out.println("\tLevel:\t" + level + "\t\t" + iv + " IV   " + ev + " EV");
         System.out.println("\tNature:\t" + (char)(nature.charAt(0)-32) + nature.substring(1));
         System.out.println("\tStats:\t" + total + "\t  " + hp + "  " + attack + "  " + defense
             + "  " + spAttack + "  " + spDefense + "  " + speed);
