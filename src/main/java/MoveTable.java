@@ -64,4 +64,30 @@ public class MoveTable implements Table {
             ex.printStackTrace();
         }
     }
+
+    public static String []getMoveInfoByName(String move) {
+        Connection conn = null;
+        Statement st = null;
+        String []mov = new String[6];
+
+        try {
+            conn = DriverManager.getConnection(database, user, pass);
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+            String query = "SELECT * FROM " + properName + " WHERE Name = \'" + move + "\';";
+            ResultSet rs = st.executeQuery(query);
+
+            rs.next();
+            mov[0] = "" + rs.getString("Name");
+            mov[1] = "" + rs.getString("Type");
+            mov[2] = "" + rs.getString("Category");
+            mov[3] = "" + rs.getString("Damage");
+            mov[4] = "" + rs.getString("PP");
+            mov[5] = "" + rs.getString("Accuracy");
+            conn.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return mov;
+    }
 }

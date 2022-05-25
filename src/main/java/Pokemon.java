@@ -3,8 +3,9 @@ public class Pokemon {
     private String name, nature;
     private String type1, type2;
     private int total, hp, attack, defense, spAttack, spDefense, speed;
+    private Moves []moves = new Moves[4];
 
-    public Pokemon(String name, int level, int iv, int ev, String nature) {
+    public Pokemon(String name, int level, int iv, int ev, String nature, String []moves) {
         String []info = GeneralTable.getGeneralInfoByName(name);
         id = Integer.parseInt(info[0]);
         this.name = info[1];
@@ -21,6 +22,8 @@ public class Pokemon {
         this.iv = iv;
         this.ev = ev;
         this.nature = nature;
+        for (int i = 0; i < 4; i++)
+            this.moves[i] = new Moves(moves[i]);
     }
 
     public String getType() {
@@ -34,5 +37,9 @@ public class Pokemon {
         System.out.println("\tNature:\t" + (char)(nature.charAt(0)-32) + nature.substring(1));
         System.out.println("\tStats:\t" + total + "\t  " + hp + "  " + attack + "  " + defense
             + "  " + spAttack + "  " + spDefense + "  " + speed);
+        System.out.println("\tMoves: " + moves[0].getName());
+        System.out.println("\t       " + moves[1].getName());
+        System.out.println("\t       " + moves[2].getName());
+        System.out.println("\t       " + moves[3].getName());
     }
 }

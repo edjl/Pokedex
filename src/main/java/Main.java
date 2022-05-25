@@ -12,7 +12,7 @@ public class Main {
         System.out.println("If this is your first time, you should probably web scrape all tables first.");
         System.out.println("    (w) Web Scrape Latest Tables");
         System.out.println("    (g) Find General Information About a Pokemon");
-        System.out.println("    (s) Find Stats About a Specific Pokemon");
+        System.out.println("    (s) Find Information About a Specific Pokemon");
         System.out.println("    (q) Quit");
         return sc.nextLine().charAt(0);
     }
@@ -61,8 +61,13 @@ public class Main {
         sc.nextLine();
         System.out.println("What is the nature of the pokemon?");
         String nature = sc.nextLine();
+        System.out.println("What are the 4 moves that the pokemon knows.");
+        System.out.println("If the pokemon knows less than 4 moves, type 'q' after the last move.");
+        String []moves = new String[4];
+        for (int i = 0; i < 4; i++)
+            moves[i] = sc.nextLine();
 
-        Pokemon poke = new Pokemon(name, level, iv, ev, nature);
+        Pokemon poke = new Pokemon(name, level, iv, ev, nature, moves);
         poke.printPokemon();
     }
 
