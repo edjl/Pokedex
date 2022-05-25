@@ -16,7 +16,7 @@ public class Main {
         return sc.nextLine().charAt(0);
     }
 
-    public static String getPokemon(Scanner sc) {
+    public static String getPokemonPrompt(Scanner sc) {
         String pokemon = "";
         System.out.println("Which Pokemon would you like information on (type the name)?");
         pokemon = sc.nextLine();
@@ -54,7 +54,7 @@ public class Main {
             if (prompt == 'w')
                 webScrapeTable(sc);
             else if (prompt == 'g') {
-                String pokemon = getPokemon(sc);
+                String pokemon = getPokemonPrompt(sc);
                 GeneralTable.printGeneralInfo(pokemon);
             }
 
