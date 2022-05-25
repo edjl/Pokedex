@@ -8,7 +8,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class TypeTable implements Table {
     static final String properName = "TYPE";
