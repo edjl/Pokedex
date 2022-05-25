@@ -24,7 +24,7 @@ public class GeneralTable implements Table {
             "SpAtk INTEGER not null, " +
             "SpDef INTEGER not null, " +
             "Speed INTEGER not null, " +
-            "PRIMARY KEY (Id, Name))";
+            "PRIMARY KEY (Name))";
 
     public static String getName (String name, String subName) {
         name = Table.handleApostraphe(name);
@@ -41,7 +41,6 @@ public class GeneralTable implements Table {
         Statement st = null;
 
         try {
-            Class.forName(Driver);
             conn = DriverManager.getConnection(database, user, pass);
             st = conn.createStatement();
 
@@ -82,14 +81,40 @@ public class GeneralTable implements Table {
                     st.executeUpdate(query);
                 }
             }
-            if (st != null) {
-                conn.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
+            conn.close();
         } catch(Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static String []getGeneralInfoByName(String pokemon) {
+        Connection conn = null;
+        Statement st = null;
+        String []pok = new String[11];
+
+        try {
+            conn = DriverManager.getConnection(database, user, pass);
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+            String query = "SELECT * FROM " + properName + " WHERE Name = \'" + pokemon + "\';";
+            ResultSet rs = st.executeQuery(query);
+
+            rs.next();
+            pok[0] = "" + rs.getInt("Id");
+            pok[1] = "" + rs.getString("Name");
+            pok[2] = "" + rs.getString("Type1");
+            pok[3] = "" + rs.getString("Type2");
+            pok[4] = "" + rs.getInt("Total");
+            pok[5] = "" + rs.getInt("HP");
+            pok[6] = "" + rs.getInt("Attack");
+            pok[7] = "" + rs.getInt("Defense");
+            pok[8] = "" + rs.getInt("SpAtk");
+            pok[9] = "" + rs.getInt("SpDef");
+            pok[10] = "" + rs.getInt("Speed");
+            conn.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return pok;
     }
 }
