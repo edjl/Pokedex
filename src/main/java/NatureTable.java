@@ -59,4 +59,10 @@ public class NatureTable implements Table {
             ex.printStackTrace();
         }
     }
+
+    public static double getMultiplier (String nature, String stat) {
+
+
+        return 0.0;
+    }
 }

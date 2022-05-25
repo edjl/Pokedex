@@ -67,4 +67,39 @@ public class TypeTable implements Table {
             ex.printStackTrace();
         }
     }
+
+    public static double getMultiplier(String atkType, Pokemon pok) {
+        Connection conn = null;
+        Statement st = null;
+        double multiplier = 1.0;
+
+        try {
+            conn = DriverManager.getConnection(database, user, pass);
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+            String query = "SELECT * FROM " + properName + " WHERE Name = \'" + atkType + "\';";
+            ResultSet rs = st.executeQuery(query);
+
+            rs.next();
+            String type1 = pok.getType();
+            if (type1.contains(" ")) {
+                String type2 = type1.substring(type1.indexOf(' ') + 1);
+                type1 = type1.substring(0, type1.indexOf(' '));
+                if (rs.getString(type2).equals("½×"))
+                    multiplier *= 0.5;
+                else if (rs.getString(type2).equals("2×"))
+                    multiplier *= 2;
+            }
+
+            if (rs.getString(type1).equals("½×"))
+                multiplier *= 0.5;
+            else if (rs.getString(type1).equals("2×"))
+                multiplier *= 2;
+            conn.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return multiplier;
+    }
 }

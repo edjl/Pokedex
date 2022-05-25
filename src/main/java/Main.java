@@ -47,6 +47,9 @@ public class Main {
     }
 
     public static void main (String[] args) {
+        Pokemon p = new Pokemon("Latios", 50, 20, 20, "adamant");
+        p.printPokemon();
+
         Scanner sc = new Scanner (System.in);
         System.out.println("Welcome to Edward's Pokedex!");
         char prompt = initialPrompt(sc);
