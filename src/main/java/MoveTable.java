@@ -27,7 +27,6 @@ public class MoveTable implements Table {
         Statement st = null;
 
         try {
-            Class.forName(Driver);
             conn = DriverManager.getConnection(database, user, pass);
             st = conn.createStatement();
 
@@ -60,12 +59,7 @@ public class MoveTable implements Table {
                     st.executeUpdate(query);
                 }
             }
-            if (st != null) {
-                conn.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
+            conn.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
