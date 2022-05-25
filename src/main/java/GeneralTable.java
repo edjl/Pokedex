@@ -76,8 +76,8 @@ public class GeneralTable implements Table {
                         type1 = type1.substring(0, spaceIndex);
                     }
                     String query = "INSERT INTO " + properName + " (Id, Name, Type1, Type2, Total, HP, Attack, Defense, SpAtk, SpDef, Speed) " +
-                            "VALUES (" + number + ", \'" + name + "\', \'" + type1 + "\', \'" + type2 + "\', " + statTotal + ", " + statHP + ", " + statA +
-                            ", " + statD + ", " + statSpA + ", " + statSpD + ", " + statS + ");";
+                            "VALUES (" + number + ", \'" + name + "\', \'" + type1 + "\', \'" + type2 + "\', " + statTotal + ", " + statHP + ", " +
+                            statA + ", " + statD + ", " + statSpA + ", " + statSpD + ", " + statS + ");";
                     st.executeUpdate(query);
                 }
             }

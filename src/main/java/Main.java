@@ -11,7 +11,7 @@ public class Main {
         System.out.println("What  would you like to do?");
         System.out.println("If this is your first time, you should probably web scrape all tables first.");
         System.out.println("    (w) Web Scrape Latest Tables");
-        System.out.println("    (f) Find Information About a Pokemon");
+        System.out.println("    (g) Find General Information About a Pokemon");
         System.out.println("    (q) Quit");
         return sc.nextLine().charAt(0);
     }
@@ -39,17 +39,18 @@ public class Main {
         System.out.println("Web scrape successful!");
     }
 
-    public static void findPokemonInfo(Scanner sc) {
+    public static String findPokemonGeneralInfo(Scanner sc) {
         String pokemon = "";
         System.out.println("Which Pokemon would you like information on (type the name)?");
         pokemon = sc.nextLine();
         String []info = GeneralTable.getGeneralInfoByName(pokemon);
         System.out.print("Pokemon:\t" + info[0] + "\t  " + info[1].toUpperCase() + "    \t" + info[2]);
         System.out.println((info[3].equals("") ? "" : "-" + info[3]));
-        System.out.print("\t\t\t" + info[4] + "\t  ");
+        System.out.print("\tStats:\t" + info[4] + "\t  ");
         for (int i = 5; i < info.length; i++)
             System.out.print(info[i] + "  ");
         System.out.println();
+        return pokemon;
     }
 
     public static void main (String[] args) {
@@ -59,8 +60,8 @@ public class Main {
         while (prompt != 'q') {
             if (prompt == 'w')
                 webScrapeTable(sc);
-            else if (prompt == 'f')
-                findPokemonInfo(sc);
+            else if (prompt == 'g')
+                findPokemonGeneralInfo(sc);
 
             System.out.println();
             prompt = initialPrompt(sc);
