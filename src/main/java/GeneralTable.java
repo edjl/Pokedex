@@ -87,7 +87,7 @@ public class GeneralTable implements Table {
         }
     }
 
-    public static String []getGeneralInfoByName(String pokemon) {
+    private static String []getGeneralInfoByName(String pokemon) {
         Connection conn = null;
         Statement st = null;
         String []pok = new String[11];
@@ -116,5 +116,15 @@ public class GeneralTable implements Table {
             ex.printStackTrace();
         }
         return pok;
+    }
+
+    public static void printGeneralInfo(String pokemon) {
+        String []info = GeneralTable.getGeneralInfoByName(pokemon);
+        System.out.print("Pokemon:\t" + info[0] + "\t  " + info[1].toUpperCase() + "    \t" + info[2]);
+        System.out.println((info[3].equals("") ? "" : "-" + info[3]));
+        System.out.print("\tStats:\t" + info[4] + "\t  ");
+        for (int i = 5; i < info.length; i++)
+            System.out.print(info[i] + "  ");
+        System.out.println();
     }
 }
