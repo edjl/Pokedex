@@ -77,9 +77,8 @@ public class Main {
                 String pokemon = getPokemonPrompt(sc);
                 GeneralTable.printGeneralInfo(pokemon);
             }
-            else if (prompt == 's') {
+            else if (prompt == 's')
                 pokemonStats(sc);
-            }
 
             System.out.println();
             prompt = initialPrompt(sc);
