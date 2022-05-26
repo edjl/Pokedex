@@ -87,4 +87,23 @@ public class NatureTable implements Table {
             return 0.9;
         return 1.0;
     }
+
+    public static boolean validPokemonNature(String nature) {
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            conn = DriverManager.getConnection(database, user, pass);
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+            String query = "SELECT * FROM " + properName + " WHERE Name = \'" + nature + "\';";
+            ResultSet rs = st.executeQuery(query);
+            boolean valid = rs.next();
+            conn.close();
+            return valid;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 }

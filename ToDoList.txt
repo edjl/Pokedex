@@ -1,0 +1,4 @@
+Stuff To Do
+
+1. Check if inputted moves are valid for said pokemon.
+    Maybe? The rule may not be true for gym leaders (check anime).

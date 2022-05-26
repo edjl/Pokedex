@@ -8,19 +8,31 @@ import java.util.Scanner;
 public class Main {
 
     public static char initialPrompt(Scanner sc) {
+        String input = "";
+        boolean validInput = false;
         System.out.println("What  would you like to do?");
         System.out.println("If this is your first time, you should probably web scrape all tables first.");
         System.out.println("    (w) Web Scrape Latest Tables");
-        System.out.println("    (g) Find General Information About a Pokemon");
-        System.out.println("    (s) Find Information About a Specific Pokemon");
+        System.out.println("    (g) Show General Information About a Pokemon");
+        System.out.println("    (s) Show Information About a Specific Pokemon");
         System.out.println("    (q) Quit");
-        return sc.nextLine().charAt(0);
+        while (!validInput) {
+            input = sc.nextLine().toLowerCase();
+            if (input.length() == 1) {
+                if (input.charAt(0) == 'w' || input.charAt(0) == 'g' ||
+                        input.charAt(0) == 's' || input.charAt(0) == 'q') {
+                    break;
+                }
+            }
+            System.out.println("Invalid input! Please try again.");
+        }
+        return input.charAt(0);
     }
 
     public static String getPokemonPrompt(Scanner sc) {
         String pokemon = "";
         System.out.println("Which Pokemon would you like information on (type the name)?");
-        pokemon = sc.nextLine();
+        pokemon = Input.inputValidPokemonName(sc);
         return pokemon;
     }
 
@@ -49,23 +61,20 @@ public class Main {
 
     public static void pokemonStats(Scanner sc) {
         System.out.println("What is the name of the pokemon?");
-        String name = sc.nextLine();
+        String name = Input.inputValidPokemonName(sc);
         System.out.println("What is the level of the pokemon?");
-        int level = sc.nextInt();
-        sc.nextLine();
+        int level = Input.inputValidPokemonLevel(sc);
         System.out.println("What is the IV of the pokemon?");
-        int iv = sc.nextInt();
-        sc.nextLine();
+        int iv = Input.inputValidPokemonV(sc);
         System.out.println("What is the EV of the pokemon?");
-        int ev = sc.nextInt();
-        sc.nextLine();
+        int ev = Input.inputValidPokemonV(sc);
         System.out.println("What is the nature of the pokemon?");
-        String nature = sc.nextLine();
+        String nature = Input.inputValidPokemonNature(sc);
         System.out.println("What are the 4 moves that the pokemon knows.");
         System.out.println("If the pokemon knows less than 4 moves, type 'q' after the last move.");
         String []moves = new String[4];
         for (int i = 0; i < 4; i++)
-            moves[i] = sc.nextLine();
+            moves[i] = Input.inputValidPokemonMove(sc);
 
         Pokemon poke = new Pokemon(name, level, iv, ev, nature, moves);
         poke.printPokemon();

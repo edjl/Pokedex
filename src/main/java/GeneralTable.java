@@ -118,6 +118,25 @@ public class GeneralTable implements Table {
         return pok;
     }
 
+    public static boolean validPokemonName(String name) {
+        Connection conn = null;
+        Statement st = null;
+
+        try {
+            conn = DriverManager.getConnection(database, user, pass);
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+            String query = "SELECT * FROM " + properName + " WHERE Name = \'" + name + "\';";
+            ResultSet rs = st.executeQuery(query);
+            boolean valid = rs.next();
+            conn.close();
+            return valid;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
     public static void printGeneralInfo(String pokemon) {
         String []info = GeneralTable.getGeneralInfoByName(pokemon);
         System.out.print("Pokemon:\t" + info[0] + "\t  " + info[1].toUpperCase() + "    \t" + info[2]);
