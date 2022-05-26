@@ -121,14 +121,13 @@ public class GeneralTable implements Table {
     public static boolean validPokemonName(String name) {
         Connection conn = null;
         Statement st = null;
-        ResultSet rs = null;
 
         try {
             conn = DriverManager.getConnection(database, user, pass);
             st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
             String query = "SELECT * FROM " + properName + " WHERE Name = \'" + name + "\';";
-            rs = st.executeQuery(query);
+            ResultSet rs = st.executeQuery(query);
             boolean valid = rs.next();
             conn.close();
             return valid;
