@@ -1,4 +1,7 @@
 Stuff To Do
 
-1. Check if inputted moves are valid for said pokemon.
-    Maybe? The rule may not be true for gym leaders (check anime).
+1. Make a 1v1 battle simulator
+2. Let the user view top 10s, 20s, 50s, etc. (highest damage moves, highest stat pokemon, etc.)
+3. Let the user view pokemon of certain types
+4. Check if inputted moves are valid for certain pokemon (Pikachu shouldn't be able to be assigned moves it can't learn).
+    Maybe? The rule may not be true for gym leaders (check the games).
