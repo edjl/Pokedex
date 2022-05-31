@@ -1,7 +1,15 @@
 Stuff To Do
 
-1. Make a 1v1 battle simulator
-2. Let the user view top 10s, 20s, 50s, etc. (highest damage moves, highest stat pokemon, etc.)
-3. Let the user view pokemon of certain types
-4. Check if inputted moves are valid for certain pokemon (Pikachu shouldn't be able to be assigned moves it can't learn).
+0. Make a PokemonTeam.java to hold up to 6 pokemon.
+1. Make a 1v1 battle simulator.
+2. Make a Team vs. Team battle simulator.
+3. Let the user view top 10s, 20s, 50s, etc. (highest damage moves, highest stat pokemon, etc.).
+4. Let the user view all pokemon
+5. Let the user view pokemon of certain types.
+6. Webscrape moves a pokemon can learn (TMs, HMs, Level up, Egg).
+7. Webscrape teams for gym leaders and elite four.
+8. Check if inputted moves are valid for certain pokemon (Pikachu shouldn't be able to be assigned moves it can't learn).
     Maybe? The rule may not be true for gym leaders (check the games).
+9. Not allow the user to webscrape tables
+10. Move all user input to Input.java from Main.java
+    Includes removing Scanner class from Main.java

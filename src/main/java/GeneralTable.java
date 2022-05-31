@@ -8,6 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class GeneralTable implements Table {
     static final String properName = "GENERAL";
@@ -145,5 +146,85 @@ public class GeneralTable implements Table {
         for (int i = 5; i < info.length; i++)
             System.out.print(info[i] + "  ");
         System.out.println();
+    }
+
+    public static int []sortByIdNum(ArrayList<String[]> pokemonList) {
+        int []order = new int[pokemonList.size()];
+        ArrayList<ArrayList<Integer>> digit = new ArrayList<ArrayList<Integer>>();
+        int count = 0;
+
+        for (int i = 0; i < order.length; i++)
+            order[i] = i;
+        for (int i = 0; i < 10; i++) {
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            digit.add(list);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            count = 0;
+            for (int j = 0; j < order.length; j++) {
+                String idNum = pokemonList.get(order[j])[0];
+                int placement = 0;
+                if (idNum.length() > i)
+                    placement = (int)(idNum.charAt(idNum.length()-i-1)) - 48;
+                digit.get(placement).add(order[j]);
+            }
+            for (int j = 0; j < digit.size(); j++) {
+                for (int k = 0; k < digit.get(j).size(); k++) {
+                    order[count++] = digit.get(j).get(k);
+                }
+                digit.get(j).clear();
+            }
+        }
+
+        for(int i = order.length - 1; i > 0; i++) {
+            if (pokemonList.get(order[i-1])[2].contains(pokemonList.get(order[i])[2])) {
+                order[i] += order[i-1];
+                order[i-1] = order[i] - order[i-1];
+                order[i] -= order[i-1];
+            }
+        }
+
+        return order;
+    }
+
+    public static void printPokemonByType(String type) {
+        Connection conn = null;
+        Statement st = null;
+        ArrayList<String[]> pokemonList = new ArrayList<String[]>();
+
+        try {
+            conn = DriverManager.getConnection(database, user, pass);
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+            String query = "SELECT * FROM " + properName + " WHERE Type1 = \'" + type + "\' OR Type2 = \'" + type + "\';";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                String []pokemon = new String[5];
+                pokemon[0] = rs.getString("Id");
+                pokemon[1] = "" + rs.getString("Name").length();
+                pokemon[2] = rs.getString("Name");
+                pokemon[3] = rs.getString("Type1");
+                pokemon[4] = rs.getString("Type2");
+                pokemonList.add(pokemon);
+            }
+            conn.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        int []order = sortByIdNum(pokemonList);
+
+        System.out.println("List of " + type + " Pokemon:");
+        for (int i = 0; i < order.length; i++) {
+            String []pokemon = pokemonList.get(order[i]);
+            System.out.print("\t" + pokemon[0] + "\t" + pokemon[2]);
+            for (int j = Integer.parseInt(pokemon[1]); j <= 35; j++)
+                System.out.print(" ");
+            System.out.print(pokemon[3]);
+            for (int j = pokemon[3].length(); j <= 10; j++)
+                System.out.print(" ");
+            System.out.println(pokemon[4]);
+        }
     }
 }
