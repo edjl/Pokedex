@@ -177,8 +177,8 @@ public class GeneralTable implements Table {
             }
         }
 
-        for(int i = order.length - 1; i > 0; i++) {
-            if (pokemonList.get(order[i-1])[2].contains(pokemonList.get(order[i])[2])) {
+        for(int i = order.length - 1; i > 0; i--) {
+            if ((pokemonList.get(order[i-1])[2]).contains(pokemonList.get(order[i])[2])) {
                 order[i] += order[i-1];
                 order[i-1] = order[i] - order[i-1];
                 order[i] -= order[i-1];
