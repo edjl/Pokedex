@@ -5,7 +5,6 @@ Stuff To Do
 2. Make a Team vs. Team battle simulator.
 3. Let the user view top 10s, 20s, 50s, etc. (highest damage moves, highest stat pokemon, etc.).
 4. Let the user view all pokemon
-5. Let the user view pokemon of certain types.
 6. Webscrape moves a pokemon can learn (TMs, HMs, Level up, Egg).
 7. Webscrape teams for gym leaders and elite four.
 8. Check if inputted moves are valid for certain pokemon (Pikachu shouldn't be able to be assigned moves it can't learn).
