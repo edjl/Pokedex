@@ -15,12 +15,14 @@ public class Main {
         System.out.println("    (w) Web Scrape Latest Tables");
         System.out.println("    (g) Show General Information About a Pokemon");
         System.out.println("    (s) Show Information About a Specific Pokemon");
+        System.out.println("    (p) Print A List of Pokemon");
         System.out.println("    (q) Quit");
         while (!validInput) {
             input = sc.nextLine().toLowerCase();
             if (input.length() == 1) {
                 if (input.charAt(0) == 'w' || input.charAt(0) == 'g' ||
-                        input.charAt(0) == 's' || input.charAt(0) == 'q') {
+                        input.charAt(0) == 's' || input.charAt(0) == 'p' ||
+                        input.charAt(0) == 'q') {
                     break;
                 }
             }
@@ -80,6 +82,12 @@ public class Main {
         poke.printPokemon();
     }
 
+    public static void pokemonList(Scanner sc) {
+        System.out.println("What is the type of pokemon you want?");
+        String type = Input.inputValidType(sc);
+        GeneralTable.printPokemonByType(type);
+    }
+
     public static void main (String[] args) {
         Scanner sc = new Scanner (System.in);
         System.out.println("Welcome to Edward's Pokedex!");
@@ -93,6 +101,8 @@ public class Main {
             }
             else if (prompt == 's')
                 pokemonStats(sc);
+            else if (prompt == 'p')
+                pokemonList(sc);
 
             System.out.println();
             prompt = initialPrompt(sc);

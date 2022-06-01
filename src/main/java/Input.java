@@ -51,4 +51,14 @@ public class Input {
         }
         return input;
     }
+
+    public static String inputValidType(Scanner sc) {
+        String input = "";
+        input = sc.nextLine();
+        while (!TypeTable.validPokemonType(input)) {
+            System.out.println("Invalid Input! Please try again.");
+            input = sc.nextLine();
+        }
+        return input;
+    }
 }
