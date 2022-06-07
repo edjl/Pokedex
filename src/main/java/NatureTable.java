@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.sql.*;
 
-public class NatureTable implements Table {
+public class NatureTable extends Table {
     static final String properName = "NATURE";
     static final String webURL = "https://bulbapedia.bulbagarden.net/wiki/Nature";
     static final String tSQL = "CREATE TABLE " + properName +

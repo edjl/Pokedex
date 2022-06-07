@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 import java.net.SocketOption;
 import java.sql.*;
 
-public class MoveTable implements Table {
+public class MoveTable extends Table {
     static final String properName = "MOVES";
     static final String webURL = "https://bulbapedia.bulbagarden.net/wiki/List_of_moves";
     static final String tSQL = "CREATE TABLE " + properName +

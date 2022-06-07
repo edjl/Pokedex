@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.sql.*;
 
-public class AbilityTable implements Table {
+public class AbilityTable extends Table {
     static final String properName = "ABILITY";
     static final String webURL = "https://pokemondb.net/ability";
     static final String tSQL = "CREATE TABLE " + properName +

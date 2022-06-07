@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class GeneralTable implements Table {
+public class GeneralTable extends Table {
     static final String properName = "GENERAL";
     static final String webURL = "https://pokemondb.net/pokedex/all";
     static final String tSQL = "CREATE TABLE " + properName +
