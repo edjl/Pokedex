@@ -9,7 +9,7 @@ import org.jsoup.nodes.Element;
 
 import java.sql.*;
 
-public class TypeTable implements Table {
+public class TypeTable extends Table {
     static final String properName = "TYPE";
     static final String webURL = "https://bulbapedia.bulbagarden.net/wiki/Type";
     static final String tSQL = "CREATE TABLE " + properName +
