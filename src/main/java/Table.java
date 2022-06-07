@@ -5,7 +5,7 @@
 
 public abstract class Table {
     static final String Driver = "com.mysql.jdbc.Driver";
-    static final String database = "jdbc:mysql://localhost/a2";
+    static final String database = "jdbc:mysql://localhost/POKEMON";
     static final String user = "root";
     static final String pass = "";
     public static void updateTable() {}
