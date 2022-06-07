@@ -39,7 +39,7 @@ public class Input {
             System.out.print("Invalid Input! Please try again. ");
             input = sc.nextLine();
         }
-        return input;
+        return input.toLowerCase();
     }
 
     public static String inputValidPokemonMove(Scanner sc) {
