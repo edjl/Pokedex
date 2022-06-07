@@ -197,7 +197,9 @@ public class GeneralTable extends Table {
             conn = DriverManager.getConnection(database, user, pass);
             st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
-            String query = "SELECT * FROM " + properName + " WHERE Type1 = \'" + type + "\' OR Type2 = \'" + type + "\';";
+            String query = "SELECT * FROM " + properName + ";";
+            if (!type.equals("all"))
+                query = "SELECT * FROM " + properName + " WHERE Type1 = \'" + type + "\' OR Type2 = \'" + type + "\';";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {

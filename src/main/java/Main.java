@@ -9,7 +9,6 @@ public class Main {
 
     public static char initialPrompt(Scanner sc) {
         String input = "";
-        boolean validInput = false;
         System.out.println("What  would you like to do?");
         System.out.println("If this is your first time, you should probably web scrape all tables first.");
         System.out.println("    (w) Web Scrape Latest Tables");
@@ -17,7 +16,7 @@ public class Main {
         System.out.println("    (s) Show Information About a Specific Pokemon");
         System.out.println("    (p) Print A List of Pokemon");
         System.out.println("    (q) Quit");
-        while (!validInput) {
+        while (true) {
             input = sc.nextLine().toLowerCase();
             if (input.length() == 1) {
                 if (input.charAt(0) == 'w' || input.charAt(0) == 'g' ||
@@ -83,8 +82,26 @@ public class Main {
     }
 
     public static void pokemonList(Scanner sc) {
-        System.out.print("What is the type of pokemon you want? ");
-        String type = Input.inputValidType(sc);
+        String input;
+        System.out.println("What type of list do you want?");
+        System.out.println("    (a) All pokemon");
+        System.out.println("    (t) By Type");
+        while (true) {
+            input = sc.nextLine().toLowerCase();
+            if (input.length() == 1) {
+                if (input.charAt(0) == 'a' || input.charAt(0) == 't') {
+                    break;
+                }
+            }
+            System.out.println("Invalid input! Please try again.");
+        }
+        String type = "";
+        if (input.charAt(0) == 'a')
+            type = "all";
+        else if (input.charAt(0) == 't') {
+            System.out.print("What is the type of pokemon you want? ");
+            type = Input.inputValidType(sc);
+        }
         GeneralTable.printPokemonByType(type);
     }
 
