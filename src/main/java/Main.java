@@ -33,7 +33,7 @@ public class Main {
 
     public static String getPokemonPrompt(Scanner sc) {
         String pokemon = "";
-        System.out.println("Which Pokemon would you like information on (type the name)?");
+        System.out.print("Which Pokemon would you like information on (type the name)? ");
         pokemon = Input.inputValidPokemonName(sc);
         return pokemon;
     }
@@ -62,15 +62,15 @@ public class Main {
     }
 
     public static void pokemonStats(Scanner sc) {
-        System.out.println("What is the name of the pokemon?");
+        System.out.print("What is the name of the pokemon? ");
         String name = Input.inputValidPokemonName(sc);
-        System.out.println("What is the level of the pokemon?");
+        System.out.print("What is the level of the pokemon? ");
         int level = Input.inputValidPokemonLevel(sc);
-        System.out.println("What is the IV of the pokemon?");
+        System.out.print("What is the IV of the pokemon? ");
         int iv = Input.inputValidPokemonV(sc);
-        System.out.println("What is the EV of the pokemon?");
+        System.out.print("What is the EV of the pokemon? ");
         int ev = Input.inputValidPokemonV(sc);
-        System.out.println("What is the nature of the pokemon?");
+        System.out.print("What is the nature of the pokemon? ");
         String nature = Input.inputValidPokemonNature(sc);
         System.out.println("What are the 4 moves that the pokemon knows.");
         System.out.println("If the pokemon knows less than 4 moves, type 'q' after the last move.");
@@ -83,7 +83,7 @@ public class Main {
     }
 
     public static void pokemonList(Scanner sc) {
-        System.out.println("What is the type of pokemon you want?");
+        System.out.print("What is the type of pokemon you want? ");
         String type = Input.inputValidType(sc);
         GeneralTable.printPokemonByType(type);
     }
