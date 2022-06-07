@@ -74,9 +74,7 @@ public class Main {
         String nature = Input.inputValidPokemonNature(sc);
         System.out.println("What are the 4 moves that the pokemon knows.");
         System.out.println("If the pokemon knows less than 4 moves, type 'q' after the last move.");
-        String []moves = new String[4];
-        for (int i = 0; i < 4; i++)
-            moves[i] = Input.inputValidPokemonMove(sc);
+        String []moves = Input.inputValidPokemonMoves(sc);
 
         Pokemon poke = new Pokemon(name, level, iv, ev, nature, moves);
         poke.printPokemon();
