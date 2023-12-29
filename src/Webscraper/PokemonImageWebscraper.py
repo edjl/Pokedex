@@ -7,6 +7,7 @@ import csv
 import requests
 import os
 import threading
+import sqlite3
 
 
 def download_image(pokemon_name, image_url):
@@ -20,10 +21,12 @@ def download_image(pokemon_name, image_url):
 
 def scrapeImages():
     pokemon_names = []
-    with open("tables/Pokemon.csv", newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            pokemon_names.append(row['Name'])
+    conn = sqlite3.connect('databases/pokemon.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name FROM pokemon ORDER BY id ASC")
+    two_d_array = cursor.fetchall()
+    pokemon_names = [row[0] for row in two_d_array]
+    conn.close()
 
     base_url = "https://pokemondb.net/pokedex/"
     special_url_names = ["Deoxys", "Burmy", "Wormadam", "Giratina", "Shaymin", "Basculin", "Darmanitan", "Tornadus", "Thundurus", \
