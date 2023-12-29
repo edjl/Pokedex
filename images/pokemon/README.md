@@ -1,0 +1,1 @@
+This folder holds all pokemon images webscraped for this project
