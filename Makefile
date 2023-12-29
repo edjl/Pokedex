@@ -1,3 +1,6 @@
+# Edward Lee
+# December 21, 2023
+
 # Define variables
 SRCDIR = src
 BINDIR = bin

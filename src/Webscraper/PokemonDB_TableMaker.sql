@@ -1,3 +1,8 @@
+/*
+ * Edward Lee
+ * December 21, 2023
+ */
+
 CREATE TABLE IF NOT EXISTS moves (
                         name TEXT PRIMARY KEY,
                         type TEXT NOT NULL,
