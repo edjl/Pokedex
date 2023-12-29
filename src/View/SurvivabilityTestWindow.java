@@ -110,7 +110,7 @@ public class SurvivabilityTestWindow extends Window {
         pokemonSelector.addActionListener(e -> {
             String selectedValue = pokemonSelector.getSelectedItem().toString();
             pokemon.setName(selectedValue);
-            imageLabel.setIcon(sizeIcon(pokemon.getName(), panel.getWidth() - 25, panel.getHeight() - topPanel.getHeight() - bottomPanel.getHeight() - 15));
+            imageLabel.setIcon(sizePokemonIcon(pokemon.getName(), panel.getWidth() - 25, panel.getHeight() - topPanel.getHeight() - bottomPanel.getHeight() - 15));
         });
         levelSelect.addChangeListener(new ChangeListener() {
             @Override
@@ -124,7 +124,7 @@ public class SurvivabilityTestWindow extends Window {
             public void componentResized(ComponentEvent e) {
                 bottomPanel.setPreferredSize(new Dimension(windowWidth/2, bottomPanel.getPreferredSize().height));
                 int expectedHeight = panel.getHeight() - topPanel.getHeight() - bottomPanel.getHeight() - 15;
-                imageLabel.setIcon(sizeIcon(pokemon.getName(), panel.getWidth() - 25, expectedHeight));
+                imageLabel.setIcon(sizePokemonIcon(pokemon.getName(), panel.getWidth() - 25, expectedHeight));
             }
         });
 

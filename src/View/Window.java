@@ -46,8 +46,8 @@ public class Window extends JFrame {
     }
 
 
-    protected ImageIcon sizeIcon(String pokemonName, int availWidth, int availHeight) {
-        ImageIcon originalIcon = new ImageIcon("images/" + pokemonName + ".png");
+    protected ImageIcon sizePokemonIcon(String pokemonName, int availWidth, int availHeight) {
+        ImageIcon originalIcon = new ImageIcon("images/pokemon/" + pokemonName + ".png");
         double imageRatio = ((double)(originalIcon.getIconWidth())) / originalIcon.getIconHeight();
         int width = -1, height = -1;
         if (availWidth <= imageRatio * availHeight) {
