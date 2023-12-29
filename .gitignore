@@ -1,6 +1,6 @@
 
 # Build
-*.class
+**/*.class
 # Databases
 /databases/*
 # Images
