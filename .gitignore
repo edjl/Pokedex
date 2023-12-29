@@ -1,6 +1,7 @@
 
 # Build
 /bin/*
+/bin/src/*
 # Databases
 /databases/*
 # Images
