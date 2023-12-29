@@ -36,7 +36,7 @@ public class Simulation {
             double critical = (0.0625 > Math.random()) ? 2 : 1;
             double random = (16 * Math.random() + 85) / 100.0;
 
-            int damage = (int)(((2 * attacker.getLevel() / 5 + 2) * move.getPower() * A/D / 50 + 2) * critical * random * targets * pb 
+            int damage = (int)(((2.0 * (double)attacker.getLevel() / 5.0 + 2) * move.getPower() * A/D / 50 + 2) * critical * random * targets * pb 
                 * weather * glaveRush * stab * type * burn * other);
             if (value && damage < hp || !value && damage < ((double)hp / 100 * defender.getStats()[1]))
                 count++;
