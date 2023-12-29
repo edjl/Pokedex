@@ -1,10 +1,10 @@
 
 # Build
-/bin/**
+/bin/*
 # Databases
-/databases/**
+/databases/*
 # Images
-/images/**
+/images/*
 
 # Except for the specific file
 !**/README.md
