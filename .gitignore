@@ -1,0 +1,10 @@
+
+# Build
+/bin/*
+# Databases
+/databases/*
+# Images
+/images/*
+
+# Except for the specific file
+!**/README.md
