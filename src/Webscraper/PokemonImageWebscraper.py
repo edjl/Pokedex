@@ -14,7 +14,7 @@ def download_image(pokemon_name, image_url):
     if response.status_code == 200:
         if not os.path.exists('images'):
             os.makedirs('images')
-        with open(f"images/{pokemon_name}.png", 'wb') as f:
+        with open(f"images/pokemon/{pokemon_name}.png", 'wb') as f:
             f.write(response.content)
 
 
